@@ -12,8 +12,16 @@
 */
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
-    $router->get('/', function () use ($router) {
+    $router->get('/laravel-version', function () use ($router) {
         return $router->app->version();
+    });
+
+    /**
+     * Users
+     */
+    $router->group(['prefix' => 'users'], function () use ($router) {
+        $router->get('/', 'UserController@index');
+        $router->post('/', 'UserController@store');
     });
 
 });
