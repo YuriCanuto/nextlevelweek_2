@@ -22,6 +22,6 @@ class Classes extends Model
 
     public function class_schedules()
     {
-        return $this->hasMany(Classes::class, 'class_id');
+        return $this->hasMany(ClassSchedule::class, 'class_id');
     }
 }
