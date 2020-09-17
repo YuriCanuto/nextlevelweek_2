@@ -55,12 +55,19 @@ class UserController extends Controller
 
             DB::commit();
 
-            return response()->json([],201);
+            return response()->json([
+                'success' => true,
+                'message' => 'Create user',
+            ], 201);
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return $e;
-        }
+            // report($e);
 
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to create user',
+            ], 400);
+        }
     }
 }
