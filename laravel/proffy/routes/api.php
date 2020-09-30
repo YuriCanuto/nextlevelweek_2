@@ -10,6 +10,7 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
+
 $router->group(['prefix' => 'api/v1'], function () use ($router) {
 
     $router->get('/laravel-version', function () use ($router) {
@@ -22,6 +23,22 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->group(['prefix' => 'users'], function () use ($router) {
         $router->get('/', 'UserController@index');
         $router->post('/', 'UserController@store');
+    });
+
+    /**
+     * Classes
+     */
+    $router->group(['prefix' => 'classes'], function () use ($router) {
+        $router->get('/', 'ClassController@index');
+        // $router->post('/', 'UserController@store');
+    });
+
+    /**
+     * Connections
+     */
+    $router->group(['prefix' => 'connections'], function () use ($router) {
+        $router->get('/', 'ConnectionController@index');
+        $router->post('/', 'ConnectionController@create');
     });
 
 });
